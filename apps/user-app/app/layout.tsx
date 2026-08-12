@@ -2,6 +2,8 @@ import "@repo/ui/styles.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import "@repo/ui/styles.css";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Paytm app",
@@ -15,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>{children}</body>
+      <Providers>
+        <body className={GeistSans.className}>{children}</body>
+      </Providers>
     </html>
   );
 }

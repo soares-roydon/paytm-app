@@ -1,8 +1,16 @@
-import { prisma } from "@repo/db/prisma"
+"use client"
+
+// import { prisma } from "../../../packages/db/src/index"
+import { prisma } from "@repo/db/prismaConfig";
+import AppBar from "@repo/ui/appbar";
+import { SessionProvider, useSession } from "next-auth/react";
 
 export default function Page() {
-  
+  const session = useSession()
   return (
-    <div className="text-blue-500">Hi Bro!</div>
+    <>
+      <AppBar session={session}/>
+      <div>{JSON.stringify(session)}</div>
+    </>
   );
 }

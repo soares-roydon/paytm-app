@@ -7,7 +7,10 @@
   "type": "module",
   "main": "index.js",
   "exports": {
-    "prisma": "./src/index.ts"
+    "./prismaConfig": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
