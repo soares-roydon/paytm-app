@@ -5,7 +5,7 @@ const Button = ({children, onClick}: {
     onClick: () => void
 }) => {
   return (
-    <div className='flex justify-center items-center bg-black text-white rounded-md text-sm py-1.5 cursor-pointer' onClick={onClick}>{children}</div>
+    <div className='flex justify-center items-center bg-black text-white rounded-md text-sm py-1.5 px-2 cursor-pointer' onClick={onClick}>{children}</div>
   )
 }
 
