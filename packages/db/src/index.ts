@@ -11,5 +11,4 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 // Pass the adapter instance to PrismaClient
 const prisma = new PrismaClient({ adapter });
 
-
 export { prisma }

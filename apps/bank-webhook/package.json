@@ -12,10 +12,14 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@repo/db": "*",
     "@types/express": "^5.0.6",
+    "cors": "^2.8.6",
     "esbuild": "^0.28.2",
     "express": "^5.2.1",
-    "@repo/db": "*",
     "tsx": "*"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19"
   }
 }

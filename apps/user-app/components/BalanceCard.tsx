@@ -16,7 +16,7 @@ const BalanceCard = () => {
   })
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/balance/get-balance`).then(async (response) => {
+    fetch(`http://localhost:3000/api/balance`).then(async (response) => {
       const balance = await response.json()
       setBalance(balance)
     })

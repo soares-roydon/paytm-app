@@ -7,10 +7,7 @@
   "type": "module",
   "main": "index.js",
   "exports": {
-    "./prismaConfig": {
-      "types": "./dist/src/index.d.ts",
-      "default": "./src/index.ts"
-    }
+    "./prismaConfig": "./src/index.ts"
   },
   "scripts": {
   },

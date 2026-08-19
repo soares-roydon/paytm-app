@@ -10,8 +10,6 @@ const AddMoneyCard = () => {
   const [bank, setBank] = useState("");
   const session = useSession()
 
-  console.log(amount, bank)
-
   return (
     <Card>
       <div className="font-bold text-lg mb-2">Add money</div>
@@ -38,7 +36,6 @@ const AddMoneyCard = () => {
         </div>
 
         <Button onClick={() => {
-          window.location.replace("http://google.com")
           fetch(`http://localhost:3000/api/transaction/initiate-new`, {
             method: "POST",
             headers: {
