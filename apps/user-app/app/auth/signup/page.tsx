@@ -11,36 +11,36 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-async function handleSignup() {
-  try {
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
+  async function handleSignup() {
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.log(data.error);
+        return;
+      }
+
+      await signIn("credentials", {
         email,
         password,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.log(data.error);
-      return;
+        callbackUrl: "/",
+      });
+    } catch (error) {
+      console.error(error);
     }
-
-    await signIn("credentials", {
-      email,
-      password,
-      callbackUrl: "/",
-    });
-  } catch (error) {
-    console.error(error);
   }
-}
 
   return (
     <>

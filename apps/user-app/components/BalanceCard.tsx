@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
 import Card from "@repo/ui/card";
 import React from "react";
 import { useEffect, useState } from "react";
 
 interface BalanceType {
-    locked: number,
-    amount: number
+  locked: number;
+  amount: number;
 }
 
 const BalanceCard = () => {
-  const [ balance, setBalance ] = useState<BalanceType>({
+  const [balance, setBalance] = useState<BalanceType>({
     locked: 0,
-    amount: 0
-  })
+    amount: 0,
+  });
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/balance`).then(async (response) => {
-      const balance = await response.json()
-      setBalance(balance)
-    })
-  }, [])
+      const balance = await response.json();
+      setBalance(balance);
+    });
+  }, []);
 
-return (
+  return (
     <Card>
       <div>
         <div className="font-bold text-lg mb-2">Balance</div>

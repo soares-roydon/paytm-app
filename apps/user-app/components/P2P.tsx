@@ -8,22 +8,25 @@ import React, { useEffect, useState } from "react";
 const P2P = () => {
   const [amount, setAmount] = useState(0);
   const [recipientId, setRecipientId] = useState("");
-  const [ p2pTransactions, setP2pTransactions ] = useState([{
-    timestamp: "",
-    amount: "",
-    fromUserId: "",
-    id: ""
-  }])
+  const [p2pTransactions, setP2pTransactions] = useState([
+    {
+      timestamp: "",
+      amount: "",
+      fromUserId: "",
+      id: "",
+    },
+  ]);
 
-  const session = useSession()
-
+  const session = useSession();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/transaction/p2pTransactions`).then(async (response) => {
-      const data = await response.json()
-      setP2pTransactions(data.transactions)
-    })
-  }, [])
+    fetch(`http://localhost:3000/api/transaction/p2pTransactions`).then(
+      async (response) => {
+        const data = await response.json();
+        setP2pTransactions(data.transactions);
+      },
+    );
+  }, []);
 
   async function sendP2p() {
     const response = await fetch("http://localhost:3000/api/transaction/p2p", {
@@ -68,13 +71,20 @@ const P2P = () => {
         </div>
         <div className="w-full">
           <Card>
-                <div>{p2pTransactions.map((item) => {
-                  return <div key={item.id} className="flex justify-between">
+            <div>
+              {p2pTransactions.map((item) => {
+                return (
+                  <div key={item.id} className="flex justify-between">
                     <div>{item.timestamp}</div>
-                    <div>{item.fromUserId === session.data?.user?.id  ? "-": "+"}${item.amount}</div>
+                    <div>
+                      {item.fromUserId === session.data?.user?.id ? "-" : "+"}$
+                      {item.amount}
+                    </div>
                     <div>{item.fromUserId}</div>
                   </div>
-                })}</div>
+                );
+              })}
+            </div>
           </Card>
         </div>
       </div>

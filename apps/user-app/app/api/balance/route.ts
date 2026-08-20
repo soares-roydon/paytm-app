@@ -4,20 +4,20 @@ import { getServerSession } from "next-auth";
 import { prisma } from "@repo/db/prismaConfig";
 
 export async function GET(req: NextRequest) {
-    const session = await getServerSession(NEXT_AUTH)
+  const session = await getServerSession(NEXT_AUTH);
 
-    if(!session) Response.json(null)
+  if (!session) Response.json(null);
 
-    const balance = await prisma.balance.findFirst({
-        where: {
-            userId: session.user.id
-        }
-    })
+  const balance = await prisma.balance.findFirst({
+    where: {
+      userId: session.user.id,
+    },
+  });
 
-    return Response.json(balance)
+  return Response.json(balance);
 }
 
 export async function POST(req: NextRequest) {
-    const userId = await req.json()
-    return Response.json(userId)
+  const userId = await req.json();
+  return Response.json(userId);
 }

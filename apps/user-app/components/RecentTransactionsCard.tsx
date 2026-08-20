@@ -28,7 +28,10 @@ const RecentTransactionsCard = () => {
       </div>
       <div className="">
         {onRamp.map((item) => (
-          <div className="flex justify-between border-b border-zinc-200 py-1.5 px-2" key={item.id}>
+          <div
+            className="flex justify-between border-b border-zinc-200 py-1.5 px-2"
+            key={item.id}
+          >
             <div>{item.provider}</div>
             <div>${item.amount / 100}</div>
             <div>{item.status}</div>

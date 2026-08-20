@@ -28,33 +28,32 @@ export const NEXT_AUTH = {
               email: credentials?.email,
             },
           });
-  
+
           if (!user) {
             return null;
           }
-  
+
           // 2. Check if password is correct
           if (credentials?.password !== user.password) {
             return null;
           }
-  
-          return {id: user.id, email: user.email};
-          
+
+          return { id: user.id, email: user.email };
         } catch (e) {
-          console.log(e)
-          return null
+          console.log(e);
+          return null;
         }
       },
     }),
   ],
   secret: "hklskghe", // process.env.NEXTAUTH_SECRET
   callbacks: {
-    session: ({session, token, user}: any) => {
-      if(session.user) {
-        session.user.id = token.sub
+    session: ({ session, token, user }: any) => {
+      if (session.user) {
+        session.user.id = token.sub;
       }
 
-      return session
-    }
-  }
-}
+      return session;
+    },
+  },
+};

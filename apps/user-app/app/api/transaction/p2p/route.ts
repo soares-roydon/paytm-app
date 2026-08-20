@@ -93,9 +93,9 @@ export async function POST(req: NextRequest) {
           fromUserId: session.user.id,
           toUserId: recipientId,
           amount: Number(amount),
-          timestamp: new Date()
-        }
-      })
+          timestamp: new Date(),
+        },
+      });
     });
 
     return Response.json({ message: "Tranfer successfull" }, { status: 200 });
