@@ -11,6 +11,8 @@ RUN npm install
 
 RUN npm run db:generate
 
+RUN cd packages/ui && npm run build:components && cd ../..
+
 RUN cd apps/user-app && npm run build
 
 CMD ["npm", "run", "start-user-app"]
