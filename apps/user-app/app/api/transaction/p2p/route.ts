@@ -87,6 +87,15 @@ export async function POST(req: NextRequest) {
           },
         },
       });
+
+      await tx.p2pTransfer.create({
+        data: {
+          fromUserId: session.user.id,
+          toUserId: recipientId,
+          amount: Number(amount),
+          timestamp: new Date()
+        }
+      })
     });
 
     return Response.json({ message: "Tranfer successfull" }, { status: 200 });

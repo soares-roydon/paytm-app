@@ -13,12 +13,14 @@ datasource db {
 }
 
 model User {
-  id        String     @id       @default(uuid())
-  name      String
-  email     String     @unique
-  password  String
-  OnRampTransaction     OnRampTransaction[]
-  balance               Balance[]
+  id                      String                @id       @default(uuid())
+  name                    String
+  email                   String                @unique
+  password                String
+  OnRampTransaction       OnRampTransaction[]
+  balance                 Balance[]
+  sentTransfers           P2pTransfer[]         @relation(name: "FromUserRelation")
+  recievedTransfers       P2pTransfer[]         @relation(name: "ToUserRelation")
 }
 
 model Merchant {
@@ -29,14 +31,24 @@ model Merchant {
 }
 
 model OnRampTransaction {
-  id          String      @id        @default(uuid())
+  id          String          @id        @default(uuid())
   userId      String
   status      onRampStatus
-  token       String        @unique
+  token       String          @unique
   provider    String
   amount      Int
   startTime   DateTime
-  user        User        @relation(fields: [userId], references: [id])
+  user        User            @relation(fields: [userId], references: [id])
+}
+
+model P2pTransfer {
+  id            String        @id               @default(uuid())
+  amount        Int
+  timestamp     DateTime
+  fromUserId    String
+  fromUser      User          @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  toUserId      String
+  toUser        User          @relation(name: "ToUserRelation", fields: [toUserId], references: id)
 }
 
 model Balance {
