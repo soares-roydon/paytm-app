@@ -37,7 +37,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          scripts: |
+          script: |
             sudo docker pull r0yd0n/paytm-app:latest
             sudo docker stop paytm-app || true
             sudo docker rm paytm-app || true
