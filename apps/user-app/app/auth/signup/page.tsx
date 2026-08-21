@@ -35,7 +35,7 @@ export default function Signin() {
       await signIn("credentials", {
         email,
         password,
-        callbackUrl: "/",
+        callbackUrl: "http://13.51.233.156:3005/",
       });
     } catch (error) {
       console.error(error);
