@@ -41,4 +41,4 @@ jobs:
             sudo docker pull r0yd0n/paytm-app:latest
             sudo docker stop paytm-app || true
             sudo docker rm paytm-app || true
-            sudo docker run -d --name paytm-app -p 3005:3000 r0yd0n/paytm-app:latest
+            sudo docker run -d -e DATABASE_URL=${{secrets.DATABASE_URL}} --name paytm-app -p 3005:3000 r0yd0n/paytm-app:latest
