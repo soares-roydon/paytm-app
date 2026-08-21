@@ -33,12 +33,15 @@ jobs:
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
+        env: 
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         with: 
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          envs: DATABASE_URL
           script: |
             sudo docker pull r0yd0n/paytm-app:latest
             sudo docker stop paytm-app || true
             sudo docker rm paytm-app || true
-            sudo docker run -d -e DATABASE_URL=${{secrets.DATABASE_URL}} --name paytm-app -p 3005:3000 r0yd0n/paytm-app:latest
+            sudo docker run -d -e DATABASE_URL=$DATABASE_URL --name paytm-app -p 3005:3000 r0yd0n/paytm-app:latest
